@@ -1,5 +1,6 @@
 package org.infinispan.persistence.redis;
 
+import com.nimbusds.common.monitor.MonitorRegistries;
 import org.infinispan.Cache;
 import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
@@ -98,6 +99,21 @@ public class RedisServerStoreFunctionalTest extends BaseStoreFunctionalTest
         second.put("key2", this.wrap("key2", "val2"));
         Assert.assertEquals("val2", this.unwrap(second.get("key2")));
         Assert.assertNull(first.get("key2"));
+    
+        // Metrics present
+        // cache-1
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-1.redisStore.numActiveConnections"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-1.redisStore.numIdleConnections"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-1.redisStore.numWaitingForConnection"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-1.redisStore.meanWaitingTimeForConnectionMs"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-1.redisStore.maxWaitingTimeForConnectionMs"));
+        
+        // cache-2
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-2.redisStore.numActiveConnections"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-2.redisStore.numIdleConnections"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-2.redisStore.numWaitingForConnection"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-2.redisStore.meanWaitingTimeForConnectionMs"));
+        Assert.assertNotNull(MonitorRegistries.getMetricRegistry().getGauges().get("testTwoCachesSameCacheStore-2.redisStore.maxWaitingTimeForConnectionMs"));
     }
     
     public void testGetRedisStoreInstance()

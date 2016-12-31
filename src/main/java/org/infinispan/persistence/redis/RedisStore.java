@@ -1,5 +1,7 @@
 package org.infinispan.persistence.redis;
 
+import com.codahale.metrics.Gauge;
+import com.nimbusds.common.monitor.MonitorRegistries;
 import org.infinispan.commons.io.ByteBuffer;
 import org.infinispan.persistence.redis.client.*;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration;
@@ -75,6 +77,23 @@ final public class RedisStore implements AdvancedLoadWriteStore
             RedisStore.log.errorf(ex, "Failed to initialise the Redis store for cache '%s'", ctx.getCache().getName());
             throw new PersistenceException(ex);
         }
+        
+        // Register Dropwizard metrics
+        MonitorRegistries.register(
+                ctx.getCache().getName() + ".redisStore.numActiveConnections",
+                (Gauge<Integer>) () -> connectionPool.getNumActiveConnections());
+        MonitorRegistries.register(
+                ctx.getCache().getName() + ".redisStore.numIdleConnections",
+                (Gauge<Integer>) () -> connectionPool.getNumIdleConnections());
+        MonitorRegistries.register(
+                ctx.getCache().getName() + ".redisStore.numWaitingForConnection",
+                (Gauge<Integer>) () -> connectionPool.getNumWaitersForConnection());
+        MonitorRegistries.register(
+                ctx.getCache().getName() + ".redisStore.meanWaitingTimeForConnectionMs",
+                (Gauge<Long>) () -> connectionPool.getMeanConnectionBorrowWaitTimeMillis());
+        MonitorRegistries.register(
+                ctx.getCache().getName() + ".redisStore.maxWaitingTimeForConnectionMs",
+                (Gauge<Long>) () -> connectionPool.getMaxConnectionBorrowWaitTimeMillis());
     }
 
     /**

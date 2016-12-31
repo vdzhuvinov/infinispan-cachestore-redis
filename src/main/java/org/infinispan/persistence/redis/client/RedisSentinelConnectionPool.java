@@ -1,5 +1,9 @@
 package org.infinispan.persistence.redis.client;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.infinispan.persistence.redis.configuration.ConnectionPoolConfiguration;
 import org.infinispan.persistence.redis.configuration.RedisServerConfiguration;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration;
@@ -7,9 +11,6 @@ import org.infinispan.util.logging.Log;
 import org.infinispan.util.logging.LogFactory;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisSentinelPool;
-
-import java.util.HashSet;
-import java.util.Set;
 
 final public class RedisSentinelConnectionPool implements RedisConnectionPool
 {
@@ -56,7 +57,38 @@ final public class RedisSentinelConnectionPool implements RedisConnectionPool
     {
         return new RedisServerConnection(this.sentinelPool.getResource(), this.marshaller);
     }
-
+    
+    
+    @Override
+    public int getNumActiveConnections() {
+        return sentinelPool.getNumActive();
+    }
+    
+    
+    @Override
+    public int getNumIdleConnections() {
+        return sentinelPool.getNumIdle();
+    }
+    
+    
+    @Override
+    public int getNumWaitersForConnection() {
+        return sentinelPool.getNumWaiters();
+    }
+    
+    
+    @Override
+    public long getMeanConnectionBorrowWaitTimeMillis() {
+        return sentinelPool.getMeanBorrowWaitTimeMillis();
+    }
+    
+    
+    @Override
+    public long getMaxConnectionBorrowWaitTimeMillis() {
+        return sentinelPool.getMaxBorrowWaitTimeMillis();
+    }
+    
+    
     @Override
     public void shutdown()
     {

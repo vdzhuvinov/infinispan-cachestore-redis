@@ -1,15 +1,15 @@
 package org.infinispan.persistence.redis.client;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.infinispan.persistence.redis.configuration.ConnectionPoolConfiguration;
 import org.infinispan.persistence.redis.configuration.RedisServerConfiguration;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.JedisSentinelPool;
-
-import java.util.HashSet;
-import java.util.Set;
 
 final public class RedisClusterConnectionPool implements RedisConnectionPool
 {
@@ -52,7 +52,33 @@ final public class RedisClusterConnectionPool implements RedisConnectionPool
     {
         return new RedisClusterConnection(this.cluster, this.marshaller);
     }
-
+    
+    @Override
+    public int getNumActiveConnections() {
+        return -1; // TODO
+    }
+    
+    @Override
+    public int getNumIdleConnections() {
+        return -1; // TODO
+    }
+    
+    @Override
+    public int getNumWaitersForConnection() {
+        return -1; // TODO
+    }
+    
+    @Override
+    public long getMeanConnectionBorrowWaitTimeMillis() {
+        return -1; // TODO
+    }
+    
+    @Override
+    public long getMaxConnectionBorrowWaitTimeMillis() {
+        return -1; // TODO
+    }
+    
+    
     @Override
     public void shutdown()
     {
