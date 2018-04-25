@@ -1,13 +1,23 @@
 package org.infinispan.persistence.redis;
 
+
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import org.infinispan.Cache;
+import org.infinispan.CacheSet;
+import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.cache.PersistenceConfigurationBuilder;
 import org.infinispan.persistence.BaseStoreFunctionalTest;
+import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfigurationBuilder;
 import org.infinispan.persistence.redis.support.RedisCluster;
+import org.infinispan.test.fwk.TestCacheManagerFactory;
+import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
 
 @Test(testName = "persistence.redis.RedisClusterStoreFunctionalTest", groups = "functional")
 public class RedisClusterStoreFunctionalTest extends BaseStoreFunctionalTest

@@ -13,10 +13,10 @@ import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.To
 
 @MetaInfServices
 @Namespaces({
-    @Namespace(uri = "urn:infinispan:config:store:redis:8.0", root = "redis-store"),
+    @Namespace(uri = "urn:infinispan:config:store:redis:9.2", root = "redis-store"),
     @Namespace(root = "redis-store")
 })
-final public class RedisStoreConfigurationParser80 implements ConfigurationParser
+final public class RedisStoreConfigurationParser92 implements ConfigurationParser
 {
     @Override
     public void readElement(XMLExtendedStreamReader reader, ConfigurationBuilderHolder holder)
@@ -65,7 +65,7 @@ final public class RedisStoreConfigurationParser80 implements ConfigurationParse
                 }
 
                 default: {
-                    Parser80.parseStoreElement(reader, builder);
+                    Parser.parseStoreElement(reader, builder);
                     break;
                 }
             }
