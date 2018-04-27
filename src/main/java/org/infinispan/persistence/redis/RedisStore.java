@@ -3,6 +3,7 @@ package org.infinispan.persistence.redis;
 import com.codahale.metrics.Gauge;
 import com.nimbusds.common.monitor.MonitorRegistries;
 import org.infinispan.commons.io.ByteBuffer;
+import org.infinispan.commons.persistence.Store;
 import org.infinispan.persistence.redis.client.*;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration;
 import org.infinispan.commons.configuration.ConfiguredBy;
@@ -21,6 +22,7 @@ import net.jcip.annotations.ThreadSafe;
 
 @ThreadSafe
 @ConfiguredBy(RedisStoreConfiguration.class)
+@Store(shared = true)
 final public class RedisStore implements AdvancedLoadWriteStore
 {
     /**
