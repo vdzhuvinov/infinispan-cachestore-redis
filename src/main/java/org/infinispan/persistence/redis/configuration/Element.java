@@ -7,7 +7,8 @@ public enum Element
 {
     // must be first
     UNKNOWN(null),
-
+    
+    SIMPLE_REDIS_STORE("simple-redis-store"),
     REDIS_STORE("redis-store"),
     SERVER("redis-server"),
     SENTINEL("sentinel-server"),

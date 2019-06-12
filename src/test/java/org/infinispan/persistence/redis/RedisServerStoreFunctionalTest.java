@@ -6,7 +6,7 @@ import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.cache.PersistenceConfigurationBuilder;
 import org.infinispan.persistence.BaseStoreFunctionalTest;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfigurationBuilder;
 import org.infinispan.persistence.redis.support.RedisCluster;
 import org.infinispan.persistence.redis.support.RedisServer;
@@ -138,8 +138,8 @@ public class RedisServerStoreFunctionalTest extends BaseStoreFunctionalTest
         first.start();
         second.start();
         
-        RedisStore firstRedisStore = RedisStore.getInstances().get("testTwoCachesSameCacheStore-1");
-        RedisStore secondRedisStore = RedisStore.getInstances().get("testTwoCachesSameCacheStore-2");
+        RedisStore firstRedisStore = (RedisStore)RedisStore.getInstances().get("testTwoCachesSameCacheStore-1");
+        RedisStore secondRedisStore = (RedisStore)RedisStore.getInstances().get("testTwoCachesSameCacheStore-2");
         Assert.assertEquals(initialNumRedisStoreInstances + 2, RedisStore.getInstances().size());
         
         first.put("key1", "val2");

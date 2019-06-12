@@ -1,7 +1,7 @@
 package org.infinispan.persistence.redis.configuration;
 
 import org.infinispan.configuration.cache.AbstractStoreConfigurationChildBuilder;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 
 public abstract class AbstractRedisStoreConfigurationChildBuilder<S> extends AbstractStoreConfigurationChildBuilder<S>
     implements RedisStoreConfigurationChildBuilder<S>

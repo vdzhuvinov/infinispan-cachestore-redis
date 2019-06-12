@@ -5,7 +5,7 @@ import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.cache.PersistenceConfigurationBuilder;
 import org.infinispan.persistence.BaseStoreFunctionalTest;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfigurationBuilder;
 import org.infinispan.persistence.redis.support.RedisSentinel;
 import org.junit.Assert;

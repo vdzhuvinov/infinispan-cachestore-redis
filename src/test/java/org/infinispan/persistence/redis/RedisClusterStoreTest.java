@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 
 import static org.testng.AssertJUnit.assertNull;
 import static org.testng.AssertJUnit.assertTrue;

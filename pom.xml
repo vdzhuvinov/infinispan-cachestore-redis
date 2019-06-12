@@ -4,7 +4,7 @@
 
     <groupId>com.nimbusds</groupId>
     <artifactId>infinispan-cachestore-redis</artifactId>
-    <version>9.2.1</version>
+    <version>9.2.2</version>
     <packaging>bundle</packaging>
 
     <name>Infinispan Redis CacheStore</name>
@@ -209,7 +209,7 @@
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
-            <version>[9.2.0.Final,)</version>
+            <version>9.2.5.Final</version>
         </dependency>
 
         <dependency>

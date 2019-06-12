@@ -3,7 +3,7 @@ package org.infinispan.persistence.redis.configuration;
 import org.infinispan.commons.CacheConfigurationException;
 import org.infinispan.configuration.cache.AbstractStoreConfigurationBuilder;
 import org.infinispan.configuration.cache.PersistenceConfigurationBuilder;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 import java.util.ArrayList;
 import java.util.List;
 

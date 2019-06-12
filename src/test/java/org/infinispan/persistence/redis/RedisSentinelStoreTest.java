@@ -2,7 +2,7 @@ package org.infinispan.persistence.redis;
 
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.persistence.BaseStoreTest;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 import org.infinispan.persistence.redis.configuration.RedisStoreConfigurationBuilder;
 import org.infinispan.persistence.redis.support.RedisSentinel;
 import org.infinispan.persistence.spi.AdvancedLoadWriteStore;

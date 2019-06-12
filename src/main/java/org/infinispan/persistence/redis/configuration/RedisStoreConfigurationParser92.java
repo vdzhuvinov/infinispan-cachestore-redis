@@ -9,10 +9,12 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 
 import static org.infinispan.commons.util.StringPropertyReplacer.replaceProperties;
-import org.infinispan.persistence.redis.configuration.RedisStoreConfiguration.Topology;
+import org.infinispan.persistence.redis.configuration.SimpleRedisStoreConfiguration.Topology;
 
 @MetaInfServices
 @Namespaces({
+    @Namespace(uri = "urn:infinispan:config:store:simple-redis:9.2", root = "simple-redis-store"),
+    @Namespace(root = "simple-redis-store"),
     @Namespace(uri = "urn:infinispan:config:store:redis:9.2", root = "redis-store"),
     @Namespace(root = "redis-store")
 })
@@ -26,7 +28,8 @@ final public class RedisStoreConfigurationParser92 implements ConfigurationParse
 
         Element element = Element.forName(reader.getLocalName());
         switch (element) {
-            case REDIS_STORE: {
+            case REDIS_STORE:
+            case SIMPLE_REDIS_STORE: {
                 this.parseRedisStore(reader, builder.persistence(), holder.getClassLoader());
                 break;
             }
