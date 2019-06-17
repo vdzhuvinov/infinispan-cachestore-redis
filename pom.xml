@@ -7,7 +7,7 @@
     <version>9.2.2</version>
     <packaging>bundle</packaging>
 
-    <name>Infinispan Redis CacheStore</name>
+    <name>Infinispan Redis CacheStore / Connect2id Edition</name>
     <description>Infinispan CacheStore using Redis</description>
     
     <url>http://www.infinispan.org</url>
